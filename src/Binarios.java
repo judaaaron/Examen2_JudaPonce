@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Binarios {
 
     private ArrayList<Usuarios> usuarios = new ArrayList();
-    private File binario = new File("./usuarios");
+    private File binario = new File("./usuarios.jap");
 
     public Binarios() {
     }

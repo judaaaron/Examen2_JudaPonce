@@ -1,5 +1,8 @@
 
-public class ATM {
+import java.io.Serializable;
+
+
+public class ATM implements Serializable{
     
     private int cantidad;
     private LogSistema log;

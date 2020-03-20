@@ -1,8 +1,9 @@
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class LogSistema {
+public class LogSistema implements Serializable{
 
     private String Usuario, descripcion;
 

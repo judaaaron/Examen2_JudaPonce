@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class adminATM {
 
     private ArrayList<ATM> atms = new ArrayList();
-    private File binario = new File("./ATM");
+    private File binario = new File("./ATM.jpv");
 
     public adminATM() {
     }
