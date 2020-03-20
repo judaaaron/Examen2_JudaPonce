@@ -1,12 +1,16 @@
 
-public class Usuarios {
+import java.io.Serializable;
+
+
+public class Usuarios implements Serializable{
     private int id, transacciones;
-    private String primerNombre, segundoNombre, primerApellido, segundoApellido, password, nacimiento, afiliacion;
+    private String primerNombre, segundoNombre, primerApellido, segundoApellido, password, nacimiento, afiliacion, user;
+    
 
     public Usuarios() {
     }
 
-    public Usuarios(int id, int transacciones, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String password, String nacimiento, String afiliacion) {
+    public Usuarios(int id, int transacciones, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String password, String nacimiento, String afiliacion, String user) {
         this.id = id;
         this.transacciones = transacciones;
         this.primerNombre = primerNombre;
@@ -16,6 +20,7 @@ public class Usuarios {
         this.password = password;
         this.nacimiento = nacimiento;
         this.afiliacion = afiliacion;
+        this.user= user;
     }
 
     public int getId() {
@@ -90,10 +95,23 @@ public class Usuarios {
         this.afiliacion = afiliacion;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
-        return "Usuarios{" + "id=" + id + ", transacciones=" + transacciones + ", primerNombre=" + primerNombre + ", segundoNombre=" + segundoNombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido + ", password=" + password + ", nacimiento=" + nacimiento + ", afiliacion=" + afiliacion + '}';
+        return "Usuarios{" + "id=" + id + ", transacciones=" + transacciones + ", primerNombre=" + primerNombre + ", segundoNombre=" + segundoNombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido + ", password=" + password + ", nacimiento=" + nacimiento + ", afiliacion=" + afiliacion + ", user=" + user + '}';
     }
+    
+    
+
+  
+    
     
            
     

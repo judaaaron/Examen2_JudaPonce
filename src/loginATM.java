@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -65,7 +66,19 @@ public class loginATM extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         tf_id = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        tf_userr = new javax.swing.JTextField();
         fond = new javax.swing.JLabel();
+        jd_ATM = new javax.swing.JDialog();
+        jd_OpcionesCliente = new javax.swing.JDialog();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
         jl_hora = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -127,42 +140,42 @@ public class loginATM extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel4.setText("ID Usuario");
-        jd_usuarios.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+        jd_usuarios.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel6.setText("Segundo Nombre");
-        jd_usuarios.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        jd_usuarios.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel7.setText("Primer Apellido");
-        jd_usuarios.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
+        jd_usuarios.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel8.setText("Segundo Apellido");
-        jd_usuarios.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
+        jd_usuarios.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel9.setText("Contraseña");
-        jd_usuarios.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, -1, 20));
+        jd_usuarios.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, -1, 20));
 
         jLabel10.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel10.setText("Año de nacimiento");
-        jd_usuarios.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, -1, -1));
+        jd_usuarios.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel11.setText("Año de afiliación");
-        jd_usuarios.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 630, -1, -1));
-        jd_usuarios.getContentPane().add(tf_segundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 150, -1));
-        jd_usuarios.getContentPane().add(tf_primerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 150, -1));
-        jd_usuarios.getContentPane().add(tf_segundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 150, -1));
-        jd_usuarios.getContentPane().add(tf_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 150, -1));
-        jd_usuarios.getContentPane().add(tf_añoNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, 150, -1));
-        jd_usuarios.getContentPane().add(tf_afiliacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 630, 160, -1));
-        jd_usuarios.getContentPane().add(tf_primerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 150, -1));
+        jd_usuarios.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 590, -1, -1));
+        jd_usuarios.getContentPane().add(tf_segundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 150, -1));
+        jd_usuarios.getContentPane().add(tf_primerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 150, -1));
+        jd_usuarios.getContentPane().add(tf_segundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 150, -1));
+        jd_usuarios.getContentPane().add(tf_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 150, -1));
+        jd_usuarios.getContentPane().add(tf_añoNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 150, -1));
+        jd_usuarios.getContentPane().add(tf_afiliacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, 160, -1));
+        jd_usuarios.getContentPane().add(tf_primerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 150, -1));
 
         cb_usuarios.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         cb_usuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "*Usuarios*", "Cliente", "Mantenimiento" }));
-        jd_usuarios.getContentPane().add(cb_usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 670, 110, 30));
+        jd_usuarios.getContentPane().add(cb_usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 700, 110, 30));
 
         jButton3.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atm (2).png"))); // NOI18N
@@ -191,14 +204,51 @@ public class loginATM extends javax.swing.JFrame {
             }
         });
         jd_usuarios.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 710, 140, 100));
-        jd_usuarios.getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 150, -1));
+
+        tf_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_idActionPerformed(evt);
+            }
+        });
+        jd_usuarios.getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 150, -1));
 
         jLabel12.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel12.setText("Primer Nombre");
-        jd_usuarios.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+        jd_usuarios.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel13.setText("Nombre de usuario");
+        jd_usuarios.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+        jd_usuarios.getContentPane().add(tf_userr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 150, -1));
 
         fond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/manATM.jpg"))); // NOI18N
         jd_usuarios.getContentPane().add(fond, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, 0, 690, 820));
+
+        jd_ATM.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jd_OpcionesCliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton5.setText("Retirar dinero");
+        jd_OpcionesCliente.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+
+        jButton6.setText("jButton6");
+        jd_OpcionesCliente.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
+
+        jButton7.setText("jButton7");
+        jd_OpcionesCliente.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+
+        jButton8.setText("jButton8");
+        jd_OpcionesCliente.getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
+
+        jButton9.setText("jButton9");
+        jd_OpcionesCliente.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
+
+        jButton10.setText("jButton10");
+        jd_OpcionesCliente.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+
+        jButton11.setText("jButton11");
+        jd_OpcionesCliente.getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, -1, -1));
+        jd_OpcionesCliente.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 440));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -297,10 +347,42 @@ public class loginATM extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         int id2;
-        String nombre1, nombre2, apellido1, apellido2, contraseña;
-        int cuenta, saldo, id;
+        String nombre1, nombre2, apellido1, apellido2, contraseña, usuario, nacimiento, afiliacion, idd;
+        int cuenta, saldo;
+
+        nombre1 = tf_primerNombre.getText();
+        nombre2 = tf_segundoNombre.getText();
+        apellido1 = tf_primerApellido.getText();
+        apellido2 = tf_segundoApellido.getText();
+        usuario = tf_userr.getText();
+        contraseña = tf_contraseña.getText();
+        nacimiento = tf_añoNacimiento.getText();
+        afiliacion = tf_afiliacion.getText();
+        idd = tf_id.getText();
+        int id = Integer.parseInt(idd);
+        if (cb_usuarios.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, " Opcion incorrecta");
+        } else if (cb_usuarios.getSelectedIndex() == 1) {
+
+            usuarios.add(new usuarioCliente(id, 0, nombre1, nombre2, apellido1, apellido2, contraseña, nacimiento, afiliacion, usuario));
+            JOptionPane.showMessageDialog(this, " Ha sido registrado como ofertador exitosamente");
+
+            Usuarios l = new usuarioCliente(id, 0, nombre1, nombre2, apellido1, apellido2, contraseña, nacimiento, afiliacion, usuario);
+
+            usuarios.add(l);
+            b.cargarBinario();
+            b.agregarOfertador(l);
+            b.escribirBinarios();
+        } else {
+
+        }
+
 
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void tf_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_idActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,13 +428,22 @@ public class loginATM extends javax.swing.JFrame {
     private javax.swing.JLabel fondi;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -361,6 +452,8 @@ public class loginATM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JDialog jd_ATM;
+    private javax.swing.JDialog jd_OpcionesCliente;
     private javax.swing.JDialog jd_opciones;
     private javax.swing.JDialog jd_usuarios;
     private javax.swing.JLabel jl_hora;
@@ -374,6 +467,7 @@ public class loginATM extends javax.swing.JFrame {
     private javax.swing.JTextField tf_segundoApellido;
     private javax.swing.JTextField tf_segundoNombre;
     private javax.swing.JTextField tf_user;
+    private javax.swing.JTextField tf_userr;
     // End of variables declaration//GEN-END:variables
 ArrayList<Usuarios> usuarios = new ArrayList();
 

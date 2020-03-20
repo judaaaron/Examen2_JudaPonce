@@ -1,5 +1,8 @@
 
-public class Cuentas {
+import java.io.Serializable;
+
+
+public class Cuentas implements Serializable{
 
     private int nCuenta, saldo, id;
 
