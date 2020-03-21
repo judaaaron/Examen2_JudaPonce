@@ -32,13 +32,12 @@ public class loginATM extends javax.swing.JFrame {
         //cb_cajeros = a.cargarBinario();
         DefaultComboBoxModel modelo = new DefaultComboBoxModel(a.getATM().toArray());
         cb_cajeros.setModel(modelo);
-        
+
         b.cargarBinario();
         for (Usuarios usi : b.getUsuario()) {
             usuarios.add(usi);
         }
-     
-        
+
     }
 
     /**
@@ -296,7 +295,7 @@ public class loginATM extends javax.swing.JFrame {
                 jButton5MouseClicked(evt);
             }
         });
-        jd_OpcionesCliente.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 230, 120));
+        jd_OpcionesCliente.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 230, 120));
 
         bt_CrearCuenta.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         bt_CrearCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atm.png"))); // NOI18N
@@ -329,14 +328,19 @@ public class loginATM extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        jd_OpcionesCliente.getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 210, 100));
+        jd_OpcionesCliente.getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 210, 100));
 
         jButton11.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/return (4).png"))); // NOI18N
         jButton11.setText("Regresar");
         jButton11.setContentAreaFilled(false);
         jButton11.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/return (5).png"))); // NOI18N
-        jd_OpcionesCliente.getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 210, 120));
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+        jd_OpcionesCliente.getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 40, 210, 120));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/otroCajero.jpg"))); // NOI18N
         jd_OpcionesCliente.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 470));
@@ -387,7 +391,7 @@ public class loginATM extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N° Cuenta", "Saldo", "ID Usuario"
+                "Saldo", "N° Cuenta", "ID Usuario"
             }
         ) {
             Class[] types = new Class [] {
@@ -445,7 +449,7 @@ public class loginATM extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N° Cuenta", "Saldo", "ID Usuario"
+                "Saldo", "N° cuenta", "ID Usuario"
             }
         ) {
             Class[] types = new Class [] {
@@ -454,6 +458,11 @@ public class loginATM extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        t_crear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                t_crearMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(t_crear);
@@ -634,7 +643,7 @@ public class loginATM extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_exitMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        
+
         jd_opciones.pack();
         jd_opciones.setModal(true);
         jd_opciones.setLocationRelativeTo(this);
@@ -665,7 +674,7 @@ public class loginATM extends javax.swing.JFrame {
         int id2;
         String nombre1, nombre2, apellido1, apellido2, contraseña, usuario, nacimiento, afiliacion, idd;
         int cuenta, saldo;
-        
+
         nombre1 = tf_primerNombre.getText();
         nombre2 = tf_segundoNombre.getText();
         apellido1 = tf_primerApellido.getText();
@@ -679,24 +688,24 @@ public class loginATM extends javax.swing.JFrame {
         if (cb_usuarios.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, " Opcion incorrecta");
         } else if (cb_usuarios.getSelectedIndex() == 1) {
-            
+
             usuarios.add(new usuarioCliente(id, 0, nombre1, nombre2, apellido1, apellido2, contraseña, nacimiento, afiliacion, usuario));
             JOptionPane.showMessageDialog(this, " Ha sido registrado como usuario cliente exitosamente");
-            
+
             Usuarios l = new usuarioCliente(id, 0, nombre1, nombre2, apellido1, apellido2, contraseña, nacimiento, afiliacion, usuario);
-            
+
             usuarios.add(l);
             b.cargarBinario();
             b.agregarOfertador(l);
             b.escribirBinarios();
-            
+
         } else {
-            
+
             usuarios.add(new UsuarioMantenimiento(id, 0, nombre1, nombre2, apellido1, apellido2, contraseña, nacimiento, afiliacion, usuario));
             JOptionPane.showMessageDialog(this, " Ha sido registrado como usuario de mantenimiento exitosamente");
-            
+
             Usuarios l = new UsuarioMantenimiento(id, 0, nombre1, nombre2, apellido1, apellido2, contraseña, nacimiento, afiliacion, usuario);
-            
+
             usuarios.add(l);
             b.cargarBinario();
             b.agregarOfertador(l);
@@ -712,7 +721,7 @@ public class loginATM extends javax.swing.JFrame {
         tf_afiliacion.setText("");
         tf_id.setText("");
         jd_usuarios.dispose();
-        
+
 
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -721,17 +730,17 @@ public class loginATM extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_idActionPerformed
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
-        
+
         cant = tf_cantidad1.getText();
         idd = tf_id2.getText();
         tiempo = tf_time.getText();
         ubicacion = tf_ubicacion.getText();
         year = tf_year.getText();
-        
+
         int cantidad = Integer.parseInt(cant);
         int id = Integer.parseInt(idd);
         atms.add(new ATM(cantidad, xx, id, tiempo, ubicacion, year));
-        
+
         ATM k = new ATM(cantidad, xx, id, tiempo, ubicacion, year);
         atms.add(k);
         a.cargarBinario();
@@ -741,7 +750,7 @@ public class loginATM extends javax.swing.JFrame {
         cb_cajeros.setModel(modelo);
         JOptionPane.showMessageDialog(this, "ATM agreado exitosamente");
         jd_crearATM.dispose();
-        
+
 
     }//GEN-LAST:event_jButton12MouseClicked
 
@@ -766,17 +775,17 @@ public class loginATM extends javax.swing.JFrame {
                 if (b.getUsuario().get(i) instanceof usuarioCliente) {
                     JOptionPane.showMessageDialog(this, " Bienvenido " + b.getUsuario().get(i).getUser() + " Usuario cliente");
                     flag2 = i;
-                    
+
                     jd_OpcionesCliente.pack();
                     jd_OpcionesCliente.setModal(true);
                     jd_OpcionesCliente.setLocationRelativeTo(this);
                     jd_OpcionesCliente.setVisible(true);
-                    
+
                     entry = true;
                     tf_user.setText("");
                     tf_password.setText("");
                     break;
-                    
+
                 }
                 if (b.getUsuario().get(i) instanceof UsuarioMantenimiento) {
                     entry = true;
@@ -786,27 +795,27 @@ public class loginATM extends javax.swing.JFrame {
                     jd_mantenimiento.setModal(true);
                     jd_mantenimiento.setLocationRelativeTo(this);
                     jd_mantenimiento.setVisible(true);
-                    
+
                     tf_user.setText("");
                     tf_password.setText("");
                     break;
                 }
-                
+
             } else {
                 entry = false;
                 cont++;
-                
+
             }
-            
+
         }
-        
+
         if (entry == false) {
             JOptionPane.showMessageDialog(this, " Usuario y/o contraseña ");
             tf_user.setText("");
             tf_password.setText("");;
-            
+
         }
-        
+
 
     }//GEN-LAST:event_bt_IngresarMouseClicked
 
@@ -821,23 +830,24 @@ public class loginATM extends javax.swing.JFrame {
             //int x = b.getUsuario().get(flag2).setId(5);
             ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().add(new Cuentas(cuent, 0));
             b.cargarBinario();
-            
+
             b.escribirBinarios();
-            
+
             ((usuarioCliente) usuarios.get(flag2)).getCuentas().add(new Cuentas(cuent, 0));
             b.cargarBinario();
             ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().add(new Cuentas(cuent, 0));
             b.escribirBinarios();
-            
-            tablaBusqueda();
+
+            metodoMostrarTablaa1();
             JOptionPane.showMessageDialog(this, "Cuenta creada exitosamente");
             jd_crearCuenta.dispose();
             inhabilitarCampos();
+            tf_nCuenta.setText("");
         }
     }//GEN-LAST:event_crearCuentaMouseClicked
 
     private void bt_CrearCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_CrearCuentaMouseClicked
-        tablaBusqueda();
+        metodoMostrarTablaa1();
         jd_OpcionesCliente.setVisible(false);
         jd_crearCuenta.pack();
         jd_crearCuenta.setModal(true);
@@ -846,7 +856,7 @@ public class loginATM extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_CrearCuentaMouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        tablaBusqueda2();
+        table();
         jd_OpcionesCliente.setVisible(false);
         jd_retirarDinero.pack();
         jd_retirarDinero.setModal(true);
@@ -860,29 +870,31 @@ public class loginATM extends javax.swing.JFrame {
 
         //int cuentaa=((usuarioCliente)b.getUsuario().get(numero)).getCuentas().get(numero).getnCuenta();
         int monti = ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(numero).getSaldo();
+        System.out.println(monti);
         if (t_cuentas1.getSelectedRow() >= 0) {
             String mont = tf_monto.getText();
             int monto = Integer.parseInt(mont);
             monti += monto;
-            
-            ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(numero).setSaldo(monti);
+            int mm = monti += monto;
+
+            ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(flag2).setSaldo(mm);
             b.escribirBinarios();
-            tablaBusqueda2();
-            JOptionPane.showMessageDialog(this, "Saldo Ingresado exitosamente");
+            table();
+            JOptionPane.showMessageDialog(this, "Monto ingresado exitosamente");
             tf_monto.setText("");
             jd_retirarDinero.dispose();
             inhabilitarCampos();
         } else {
             JOptionPane.showMessageDialog(this, " No ha seleccionado ninguna cuenta de la tabla");
         }
-        
+
 
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         int numero = t_cuentas1.getSelectedRow();
         b.cargarBinario();
-        int monti = ((usuarioCliente) b.getUsuario().get(numero)).getCuentas().get(numero).getSaldo();
+        int monti = ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(numero).getSaldo();
         String mont = tf_monto.getText();
         int monto = Integer.parseInt(mont);
         if (t_cuentas1.getSelectedRow() >= 0) {
@@ -897,23 +909,22 @@ public class loginATM extends javax.swing.JFrame {
             } else if (monti == monto) {
                 ((usuarioCliente) b.getUsuario().get(numero)).getCuentas().get(numero).setSaldo(0);
                 b.escribirBinarios();
-                
-                tablaBusqueda2();
+                table();
                 jd_retirarDinero.dispose();
                 inhabilitarCampos();
             } else {
-                
+
                 monti -= monto;
                 ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(numero).setSaldo(monti);
                 b.escribirBinarios();
-                tablaBusqueda2();
-                JOptionPane.showMessageDialog(this, "Saldo Ingresado exitosamente");
+                table();
+                JOptionPane.showMessageDialog(this, "Monto retirado exitosamente");
                 jd_retirarDinero.dispose();
                 inhabilitarCampos();
                 tf_monto.setText("");
-                
+
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, " No ha seleccionado ninguna cuenta de la tabla");
         }
@@ -941,7 +952,7 @@ public class loginATM extends javax.swing.JFrame {
         jd_estadoCuenta.setLocationRelativeTo(this);
         jd_estadoCuenta.setVisible(true);
         b.cargarBinario();
-        
+
 
     }//GEN-LAST:event_jButton8MouseClicked
 
@@ -960,38 +971,45 @@ public class loginATM extends javax.swing.JFrame {
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         b.cargarBinario();
-        
+
         String k = JOptionPane.showInputDialog("Ingrese su ID");
         int id = Integer.parseInt(k);
-        
+
         String c = JOptionPane.showInputDialog("Ingrese su contraseña");
         adminMantenimiento l = new adminMantenimiento();
         l.cargarBinario();
         boolean flag = false;
-        
+
         int po = Integer.parseInt(jp_b1.getValue().toString());
         int pa = Integer.parseInt(jp_b5.getValue().toString());
         int tot = po + pa;
-        
+
         ArrayList us = l.getMante();
         if (((UsuarioMantenimiento) b.getUsuario().get(flag4)).getId() == id && ((UsuarioMantenimiento) b.getUsuario().get(flag4)).getPassword().equals(c)) {
             flag = true;
-            
+
             JOptionPane.showMessageDialog(null, "El deposito se hizo con exito");
-          
-            
+
             b.escribirBinarios();
             jd_mantenimiento.dispose();
         }
-        
+
         if (flag == false) {
             JOptionPane.showMessageDialog(null, "Usuario incorrecto");
-          //  LogSistema log = new LogSistema(((Usuarios) l.getMante().get(flag4)), "Se hizo un intento de deposito al atm de: " + tot, new Date());
-            
+            //  LogSistema log = new LogSistema(((Usuarios) l.getMante().get(flag4)), "Se hizo un intento de deposito al atm de: " + tot, new Date());
+
             b.escribirBinarios();
             jd_mantenimiento.dispose();
         }
     }//GEN-LAST:event_jButton9MouseClicked
+
+    private void t_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_t_crearMouseClicked
+
+    }//GEN-LAST:event_t_crearMouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+    jd_OpcionesCliente.dispose();
+    }//GEN-LAST:event_jButton11MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1121,76 +1139,74 @@ public class loginATM extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 ArrayList<Usuarios> usuarios = new ArrayList();
     ArrayList<ATM> atms = new ArrayList();
-    
+
     Binarios b = new Binarios(usuarios);
     adminATM a = new adminATM(atms);
     String cant, idd, tiempo, ubicacion, year;
     LogSistema xx = new LogSistema("", "", new Date());
     int flag2;
-    
+
     ArrayList<usuarioCliente> clientes = new ArrayList();
-    
+
     public void inhabilitarCampos() {
         tf_user.setEnabled(false);
         tf_password.setEnabled(false);
         bt_Ingresar.setEnabled(false);
     }
-    
-    public void metodoMostrarTabla() {
-        DefaultTableModel V = (DefaultTableModel) t_cuentas1.getModel();
-        for (int i = V.getRowCount() - 1; i >= 0; i--) {
-            V.removeRow(i);
-        }
-        b.cargarBinario();
-        
-        for (int i = 0; i < b.getUsuario().size(); i++) {
-            if (b.getUsuario().get(i) instanceof usuarioCliente) {
-                Object[] cuentass = {((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(i).getnCuenta(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(i).getSaldo(), b.getUsuario().get(i).getId()};
-                V.addRow(cuentass);
-            }
-            
-        }
-        t_cuentas1.setModel(V);
-    }
-    
+
+//    public void metodoMostrarTabla() {
+//        DefaultTableModel V = (DefaultTableModel) t_cuentas1.getModel();
+//        for (int i = V.getRowCount() - 1; i >= 0; i--) {
+//            V.removeRow(i);
+//        }
+//        b.cargarBinario();
+//        
+//        for (int i = 0; i < b.getUsuario().size(); i++) {
+//            if (b.getUsuario().get(i) instanceof usuarioCliente) {
+//                Object[] cuentass = {((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(i).getnCuenta(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(i).getSaldo(), b.getUsuario().get(i).getId()};
+//                V.addRow(cuentass);
+//            }
+//            
+//        }
+//        t_cuentas1.setModel(V);
+//    }
     public void metodoMostrarTabla2() {
         DefaultTableModel V = (DefaultTableModel) t_crear.getModel();
         for (int i = V.getRowCount() - 1; i >= 0; i--) {
             V.removeRow(i);
         }
         b.cargarBinario();
-        
+
         for (int i = 0; i < b.getUsuario().size(); i++) {
             if (b.getUsuario().get(i) instanceof usuarioCliente) {
                 Object[] cuentass = {((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(i).getnCuenta(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(i).getSaldo(), b.getUsuario().get(i).getId()};
                 V.addRow(cuentass);
             }
-            
+
         }
         t_crear.setModel(V);
     }
-    
-    public void tablaBusqueda() {
-        DefaultTableModel bb = (DefaultTableModel) t_crear.getModel();
-        for (int i = bb.getRowCount() - 1; i >= 0; i--) {
-            bb.removeRow(i);
-        }
-        
-        for (int i = 0; i < b.getUsuario().size(); i++) {
-            for (int j = 0; j < ((usuarioCliente) b.getUsuario().get(i)).getCuentas().size(); j++) {
-                Object[] search = {((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getnCuenta(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getSaldo(), b.getUsuario().get(i).getId()};
-                bb.addRow(search);
-            }
-        }
-        t_crear.setModel(bb);
-    }
-    
+
+//    public void tablaBusqueda() {
+//        DefaultTableModel bb = (DefaultTableModel) t_crear.getModel();
+//        for (int i = bb.getRowCount() - 1; i >= 0; i--) {
+//            bb.removeRow(i);
+//        }
+//        
+//        for (int i = 0; i < b.getUsuario().size(); i++) {
+//            for (int j = 0; j < ((usuarioCliente) b.getUsuario().get(i)).getCuentas().size(); j++) {
+//                Object[] search = {((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getnCuenta(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getSaldo(), b.getUsuario().get(i).getId()};
+//                bb.addRow(search);
+//            }
+//        }
+//        t_crear.setModel(bb);
+//    }
     public void tablaBusqueda2() {
         DefaultTableModel bb = (DefaultTableModel) t_cuentas1.getModel();
         for (int i = bb.getRowCount() - 1; i >= 0; i--) {
             bb.removeRow(i);
         }
-        
+
         for (int i = 0; i < b.getUsuario().size(); i++) {
             for (int j = 0; j < ((usuarioCliente) b.getUsuario().get(i)).getCuentas().size(); j++) {
                 Object[] search = {((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getnCuenta(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getSaldo(), b.getUsuario().get(i).getId()};
@@ -1199,13 +1215,13 @@ ArrayList<Usuarios> usuarios = new ArrayList();
         }
         t_cuentas1.setModel(bb);
     }
-    
+
     public void habilitarCampos() {
         tf_user.setEnabled(true);
         tf_password.setEnabled(true);
         bt_Ingresar.setEnabled(true);
     }
-    
+
     public void tablaBusqueda3() {
         DefaultTableModel bb = (DefaultTableModel) estado.getModel();
         for (int i = bb.getRowCount() - 1; i >= 0; i--) {
@@ -1213,7 +1229,7 @@ ArrayList<Usuarios> usuarios = new ArrayList();
         }
         b.cargarBinario();
         for (int i = 0; i < b.getUsuario().size(); i++) {
-            for (int j = 0; j < ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().size(); j++) {
+            for (int j = 0; j < ((usuarioCliente) b.getUsuario().get(i)).getCuentas().size(); j++) {
                 Object[] search = {b.getUsuario().get(flag2).getPrimerNombre(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getnCuenta(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getSaldo(), b.getUsuario().get(flag2).getId()};
                 bb.addRow(search);
             }
@@ -1221,19 +1237,70 @@ ArrayList<Usuarios> usuarios = new ArrayList();
         estado.setModel(bb);
     }
     int flag3;
-    
+
     public void metodoMostrarTablaa() {
         DefaultTableModel V = (DefaultTableModel) estado.getModel();
         for (int i = V.getRowCount() - 1; i >= 0; i--) {
             V.removeRow(i);
         }
-        
+
         for (Cuentas i : ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas()) {
             Object[] cards = {i.getSaldo(), i.getnCuenta(), b.getUsuario().get(flag2).getPrimerNombre(), b.getUsuario().get(flag2).getId()};
             V.addRow(cards);
         }
         estado.setModel(V);
     }
+
+    public void metodoMostrarTablaa1() {
+        DefaultTableModel V = (DefaultTableModel) t_crear.getModel();
+        for (int i = V.getRowCount() - 1; i >= 0; i--) {
+            V.removeRow(i);
+        }
+
+        for (Cuentas i : ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas()) {
+            Object[] cards = {i.getSaldo(), i.getnCuenta(), b.getUsuario().get(flag2).getPrimerNombre(), b.getUsuario().get(flag2).getId()};
+            V.addRow(cards);
+        }
+        t_crear.setModel(V);
+    }
     int flag4;
-    
+
+    public void table() {
+        DefaultTableModel bb = (DefaultTableModel) t_cuentas1.getModel();
+        for (int i = bb.getRowCount() - 1; i >= 0; i--) {
+            bb.removeRow(i);
+        }
+
+//        for (int i = 0; i < clientes.size(); i++) {
+//            for (int j = 0; j < ((usuarioCliente) b.getUsuario().get(i)).getCuentas().size(); j++) {
+//                Object[] search = {b.getUsuario().get(flag2).getPrimerNombre(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getnCuenta(), ((usuarioCliente) b.getUsuario().get(i)).getCuentas().get(j).getSaldo(), b.getUsuario().get(flag2).getId()};
+//                bb.addRow(search);
+//            }
+//        }
+//        for (Cuentas i : ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas()) {
+//            Object[] cards = {i.getSaldo(), i.getnCuenta(), b.getUsuario().get(flag2).getId()};
+//            bb.addRow(cards);
+//        }
+//        t_cuentas1.setModel(bb);
+        for (int i = 0; i < b.getUsuario().size(); i++) {
+            if (b.getUsuario().get(flag2) instanceof usuarioCliente) {
+                for (int j = 0; j < ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().size(); j++) {
+                    Object[] p = {((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(j).getSaldo(), ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(j).getnCuenta(), b.getUsuario().get(flag2).getId()};
+                    bb.addRow(p);
+                }
+
+            }
+
+        }
+//
+//for (Usuarios oi : b.getUsuario()) {
+//            if (oi instanceof usuarioCliente) {
+//                Object[] p = {((usuarioCliente) oi).getCuentas(), oi.getPrimerapellido(), oi.getUsuario(), ((usuarioCliente) oi).getCuentas().get(WIDTH)};
+//                t.addRow(p);
+//           }
+//        }
+    }
+
 }
+
+
