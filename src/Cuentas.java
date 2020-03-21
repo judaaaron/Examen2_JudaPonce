@@ -8,7 +8,7 @@ public class Cuentas implements Serializable {
     public Cuentas() {
     }
 
-    public Cuentas(int nCuenta, int saldo, int id) {
+    public Cuentas(int nCuenta, int saldo) {
         this.nCuenta = nCuenta;
         this.saldo = saldo;
 
