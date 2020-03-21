@@ -1,10 +1,9 @@
 
 import java.io.Serializable;
 
+public class Cuentas implements Serializable {
 
-public class Cuentas implements Serializable{
-
-    private int nCuenta, saldo, id;
+    private int nCuenta, saldo;
 
     public Cuentas() {
     }
@@ -12,7 +11,7 @@ public class Cuentas implements Serializable{
     public Cuentas(int nCuenta, int saldo, int id) {
         this.nCuenta = nCuenta;
         this.saldo = saldo;
-        this.id = id;
+
     }
 
     public int getnCuenta() {
@@ -31,19 +30,9 @@ public class Cuentas implements Serializable{
         this.saldo = saldo;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
-        return "Cuentas{" + "nCuenta=" + nCuenta + ", saldo=" + saldo + ", id=" + id + '}';
+        return "Cuentas{" + "nCuenta=" + nCuenta + ", saldo=" + saldo;
     }
-    
-    
 
 }
