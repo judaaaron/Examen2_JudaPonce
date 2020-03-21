@@ -116,7 +116,7 @@ public class loginATM extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         tf_monto = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jd_crearCuenta = new javax.swing.JDialog();
@@ -420,13 +420,13 @@ public class loginATM extends javax.swing.JFrame {
         });
         jd_retirarDinero.getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 200, -1));
 
-        jLabel20.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jLabel20.setText("Monto");
-        jd_retirarDinero.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 130, 30));
+        jLabel27.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel27.setText("Monto");
+        jd_retirarDinero.getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 130, 30));
 
         tf_monto.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jd_retirarDinero.getContentPane().add(tf_monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 150, 30));
-        jd_retirarDinero.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 590));
+        jd_retirarDinero.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 470));
 
         jd_crearCuenta.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -490,8 +490,8 @@ public class loginATM extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Usuario");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 70, -1));
+        jLabel2.setText("ID usuario");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -623,6 +623,15 @@ public class loginATM extends javax.swing.JFrame {
 
         } else {
 
+            usuarios.add(new UsuarioMantenimiento(id, 0, nombre1, nombre2, apellido1, apellido2, contraseña, nacimiento, afiliacion, usuario));
+            JOptionPane.showMessageDialog(this, " Ha sido registrado como ofertador exitosamente");
+
+            Usuarios l = new usuarioCliente(id, 0, nombre1, nombre2, apellido1, apellido2, contraseña, nacimiento, afiliacion, usuario);
+
+            usuarios.add(l);
+            b.cargarBinario();
+            b.agregarOfertador(l);
+            b.escribirBinarios();
         }
 
 
@@ -667,12 +676,14 @@ public class loginATM extends javax.swing.JFrame {
         b.cargarBinario();
         // metodoMostrarTabla();
         String nickname = tf_user.getText();
+        int ide = Integer.parseInt(nickname);
         String conta = tf_password.getText();
         boolean entry = false;
+        int cont = 0;
         for (int i = 0; i < b.getUsuario().size(); i++) {
-            if (b.getUsuario().get(i).getUser().equals(nickname) && b.getUsuario().get(i).getPassword().equals(conta)) {
+            if (b.getUsuario().get(i).getId()==(ide) && b.getUsuario().get(i).getPassword().equals(conta)) {
                 if (b.getUsuario().get(i) instanceof usuarioCliente) {
-                    JOptionPane.showMessageDialog(this, " Bienvenido " + nickname);
+                    JOptionPane.showMessageDialog(this, " Bienvenido " + b.getUsuario().get(i).getUser());
                     flag2 = i;
 
                     jd_OpcionesCliente.pack();
@@ -689,8 +700,14 @@ public class loginATM extends javax.swing.JFrame {
 
             } else {
                 entry = false;
+                cont++;
+
             }
 
+        }
+
+        if (cont == 5) {
+            JOptionPane.showMessageDialog(this, "Ha llegado al limite de intentos");
         }
         if (entry == false) {
             JOptionPane.showMessageDialog(this, " Usuario y/o contraseña ");
@@ -698,6 +715,7 @@ public class loginATM extends javax.swing.JFrame {
             tf_password.setText("");;
 
         }
+
 
     }//GEN-LAST:event_bt_IngresarMouseClicked
 
@@ -746,34 +764,32 @@ public class loginATM extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         int numero = t_cuentas1.getSelectedRow();
         b.cargarBinario();
-        
+
         //int cuentaa=((usuarioCliente)b.getUsuario().get(numero)).getCuentas().get(numero).getnCuenta();
         int monti = ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(numero).getSaldo();
         if (t_cuentas1.getSelectedRow() >= 0) {
             String mont = tf_monto.getText();
             int monto = Integer.parseInt(mont);
             monti += monto;
-//            for (int i = 0; i < b.getUsuario().size(); i++) {
-//                for (int j = 0; j < ((usuarioCliente) b.getUsuario().get(i)).getCuentas().size(); j++) {
-//                    if (cuentaa == ((usuarioCliente)b.getUsuario().get(i)).getCuentas().get(j).getnCuenta()) {
-//                        flag3= ((usuarioCliente)b.getUsuario().get(i)).getCuentas().get(j).getnCuenta();
-//                    }
-//                }
-//            }
-            ((usuarioCliente) b.getUsuario().get(flag3)).getCuentas().get(numero).setSaldo(monti);
+
+            ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(numero).setSaldo(monti);
             b.escribirBinarios();
             tablaBusqueda2();
             JOptionPane.showMessageDialog(this, "Saldo Ingresado exitosamente");
             tf_monto.setText("");
+            jd_retirarDinero.dispose();
+            inhabilitarCampos();
         } else {
             JOptionPane.showMessageDialog(this, " No ha seleccionado ninguna cuenta de la tabla");
         }
+
+
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         int numero = t_cuentas1.getSelectedRow();
         b.cargarBinario();
-        int monti = ((usuarioCliente) b.getUsuario().get(flag2)).getCuentas().get(numero).getSaldo();
+        int monti = ((usuarioCliente) b.getUsuario().get(numero)).getCuentas().get(numero).getSaldo();
         String mont = tf_monto.getText();
         int monto = Integer.parseInt(mont);
         if (t_cuentas1.getSelectedRow() >= 0) {
@@ -910,13 +926,13 @@ public class loginATM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1041,7 +1057,7 @@ ArrayList<Usuarios> usuarios = new ArrayList();
         tf_password.setEnabled(true);
         bt_Ingresar.setEnabled(true);
     }
-    
+
     int flag3;
 
 }
